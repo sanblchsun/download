@@ -1,0 +1,2 @@
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/sanblchsun/download/master/npp.exe" -OutFile "npp.exe"
+Start-Process -FilePath "npp.exe" -ArgumentList "/S" -Wait
