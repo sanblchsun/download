@@ -13,7 +13,7 @@ if ($isAdmin) {
         New-LocalUser -Name $username -Password $password -FullName "Administrator User" -Description "New admin account"
         
         # Добавляем нового пользователя в группу администраторов
-        Add-LocalGroupMember -Group "Administrators" -Member $username
+        Add-LocalGroupMember -Group "Администраторы" -Member $username
         Write-Host "Пользователь $username создан и добавлен в группу администраторов."
     } else {
         Write-Host "Пользователь с именем $username уже существует."
