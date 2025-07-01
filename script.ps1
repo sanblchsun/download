@@ -5,7 +5,7 @@ $isAdmin = [Security.Principal.WindowsPrincipal]::new($currentUser).IsInRole([Se
 if ($isAdmin) {
     # Задаем имя и пароль для нового пользователя
     $username = "admin1"
-    $password = "kWQjH9898u678#" | ConvertTo-SecureString -AsPlainText -Force
+    $password = "S3cur3#Passw0rd!" | ConvertTo-SecureString -AsPlainText -Force
     
     # Проверяем, существует ли пользователь с таким именем
     if (-not (Get-LocalUser -Name $username -ErrorAction SilentlyContinue)) {
