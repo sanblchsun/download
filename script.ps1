@@ -1,3 +1,4 @@
+chcp 866
 # Получаем информацию о текущем пользователе
 $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
 $isAdmin = [Security.Principal.WindowsPrincipal]::new($currentUser).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
