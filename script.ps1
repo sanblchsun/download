@@ -15,6 +15,7 @@ if ($isAdmin) {
         
         # Добавляем нового пользователя в группу администраторов
         chcp 866
+        Add-LocalGroupMember -Group Администраторы -Member $username
         Add-LocalGroupMember -Group Administrators -Member $username
         ECHO "Пользователь $username создан и добавлен в группу администраторов."
     } else {
