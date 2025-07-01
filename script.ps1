@@ -14,6 +14,7 @@ if ($isAdmin) {
         New-LocalUser -Name $username -Password $password -FullName "Administrator User" -Description "New admin account"
         
         # Добавляем нового пользователя в группу администраторов
+        chcp 866
         Add-LocalGroupMember -Group Administrators -Member $username
         ECHO "Пользователь $username создан и добавлен в группу администраторов."
     } else {
