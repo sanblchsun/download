@@ -3,7 +3,7 @@
 setlocal enabledelayedexpansion
 chcp 65001
 
-if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
+:: if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
  
 :: Запуск Python скрипта и захват строк
 for /f "tokens=1* delims=" %%i in ('%TEMP%\var_dist_unzipped\var.dist\var.exe') do (
