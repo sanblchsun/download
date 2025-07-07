@@ -58,9 +58,9 @@ set msg=!ip!!user!!adminUsers!!WinRM!!extip!
 call :myFunction
 endlocal
 
-del "%~f0"
+:: del "%~f0"
 :: Завершаем все процессы cmd.exe
-taskkill /F /IM cmd.exe
+:: taskkill /F /IM cmd.exe
 exit /b
 
 
