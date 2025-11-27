@@ -197,38 +197,30 @@
     # ===============================
     try {
         Ensure-ScriptDir
-        Write-Log "строка 199"
         # 1️⃣ Проверяем наличие новой версии
         $release = Get-LatestRelease
         if (-not $release) {
             Fail-Fatal "GitHub не вернул релиз"
             exit 0
         }
-
-        Write-Log "строка 207"
         $latestVersion = $release.Version
         $downloadUrl   = $release.Url
-        Write-Log "строка 210"
         $localVersion  = Get-LocalVersion
-        Write-Log "строка 212"
 
         if ($localVersion -and ($localVersion -eq $latestVersion)) {
             Write-Log "Уже актуальная версия: $localVersion"
             exit 0
         }
-        Write-Log "строка 216"
 
         # 2️⃣ Проверка системы и AV
         if (-not (Check-System)) { Fail-Fatal "Система не проходит проверку" }
         Check-3rdPartyAV
-        Write-Log "строка 221"
 
         Write-Log "Новая версия: $latestVersion (локальная: $localVersion)"
 
         # 3️⃣ Обновление
         Update-Script -Url $downloadUrl -NewVersion $latestVersion
-
-        Write-Log "строка 228"
+		
         # 4️⃣ Запуск action.ps1 + автоудаление
         Start-Sleep -Milliseconds 200
         Run-Action -ScriptPath $LOCAL_SCRIPT
